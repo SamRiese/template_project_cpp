@@ -1,7 +1,7 @@
 # Copyright (C) 2023 twyleg
 cmake_minimum_required(VERSION 3.26.4)
 
-project(cpp_project_template)
+project(template_project_cpp)
 
 # Externals
 add_subdirectory(external/googletest/)
