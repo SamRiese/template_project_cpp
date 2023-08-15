@@ -6,6 +6,8 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: ubuntu:focal
+      env:
+        TZ: Europe/Berlin
     steps:
     - name: 'Install git'
       run: |
