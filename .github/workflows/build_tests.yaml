@@ -19,6 +19,7 @@ jobs:
         submodules: true
     - name: 'Install dependencies'
       run: |
+        ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
         bash scripts/install_dependencies_debian_ubuntu.sh
     - name: 'Build'
       run: |
