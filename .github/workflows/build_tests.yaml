@@ -2,10 +2,62 @@ name: Build tests
 run-name: build_tests
 on: [push]
 jobs:
+  build-ubuntu-focal-job:
+    runs-on: ubuntu-latest
+    container:
+      image: ubuntu:focal
+    steps:
+    - name: 'Install git'
+      run: |
+        apt update
+        apt install -y git
+    - name: 'Checkout repository'
+      uses: actions/checkout@v3
+      with:
+        submodules: true
+    - name: 'Install dependencies'
+      run: |
+        bash scripts/install_dependencies_ubuntu.sh
+    - name: 'Build'
+      run: |
+        mkdir build/
+        cd build/
+        cmake ..
+        make -j3
+    - name: 'Smoke test'
+      run: |
+        cd build/apps/example_app/
+        ./example_app
   build-ubuntu-jammy-job:
     runs-on: ubuntu-latest
     container:
       image: ubuntu:jammy
+    steps:
+    - name: 'Install git'
+      run: |
+        apt update
+        apt install -y git
+    - name: 'Checkout repository'
+      uses: actions/checkout@v3
+      with:
+        submodules: true
+    - name: 'Install dependencies'
+      run: |
+        bash scripts/install_dependencies_ubuntu.sh
+    - name: 'Build'
+      run: |
+        mkdir build/
+        cd build/
+        cmake ..
+        make -j3
+    - name: 'Smoke test'
+      run: |
+        cd build/apps/example_app/
+        ./example_app
+  build-debian-job:
+    runs-on: ubuntu-latest
+    container:
+      image: debian:latest
     steps:
     - name: 'Install git'
       run: |
