@@ -1,5 +1,5 @@
 # Copyright (C) 2023 twyleg
-cmake_minimum_required(VERSION 3.22.1)
+cmake_minimum_required(VERSION 3.16.3)
 
 project(template_project_cpp)
 
