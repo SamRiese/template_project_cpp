@@ -2,7 +2,7 @@ name: Build tests
 run-name: build_tests
 on: [push]
 jobs:
-  build-ubuntu-focal-job:
+  build-ubuntu-focal:
     runs-on: ubuntu-latest
     container:
       image: ubuntu:focal
@@ -17,7 +17,7 @@ jobs:
         submodules: true
     - name: 'Install dependencies'
       run: |
-        bash scripts/install_dependencies_ubuntu.sh
+        bash scripts/install_dependencies_debian_ubuntu.sh
     - name: 'Build'
       run: |
         mkdir build/
@@ -28,7 +28,7 @@ jobs:
       run: |
         cd build/apps/example_app/
         ./example_app
-  build-ubuntu-jammy-job:
+  build-ubuntu-jammy:
     runs-on: ubuntu-latest
     container:
       image: ubuntu:jammy
@@ -43,7 +43,7 @@ jobs:
         submodules: true
     - name: 'Install dependencies'
       run: |
-        bash scripts/install_dependencies_ubuntu.sh
+        bash scripts/install_dependencies_debian_ubuntu.sh
     - name: 'Build'
       run: |
         mkdir build/
@@ -54,7 +54,7 @@ jobs:
       run: |
         cd build/apps/example_app/
         ./example_app
-  build-debian-job:
+  build-debian-latest:
     runs-on: ubuntu-latest
     container:
       image: debian:latest
@@ -69,7 +69,7 @@ jobs:
         submodules: true
     - name: 'Install dependencies'
       run: |
-        bash scripts/install_dependencies_ubuntu.sh
+        bash scripts/install_dependencies_debian_ubuntu.sh
     - name: 'Build'
       run: |
         mkdir build/
@@ -80,7 +80,7 @@ jobs:
       run: |
         cd build/apps/example_app/
         ./example_app
-  build-arch-job:
+  build-arch-latest:
     runs-on: ubuntu-latest
     container:
       image: archlinux:latest
