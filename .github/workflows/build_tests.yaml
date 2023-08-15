@@ -28,3 +28,28 @@ jobs:
       run: |
         cd build/apps/example_app/
         ./example_app
+  build--arch-job:
+    runs-on: ubuntu-latest
+    container:
+      image: archlinux:latest
+    steps:
+    - name: 'Install git'
+      run: |
+        pacman -Syu git
+    - name: 'Checkout repository'
+      uses: actions/checkout@v3
+      with:
+        submodules: true
+    - name: 'Install dependencies'
+      run: |
+        bash scripts/install_dependencies_arch.sh
+    - name: 'Build'
+      run: |
+        mkdir build/
+        cd build/
+        cmake ..
+        make -j3
+    - name: 'Smoke test'
+      run: |
+        cd build/apps/example_app/
+        ./example_app
