@@ -6,8 +6,7 @@ if [ "$(id -u)" -ne 0 ]; then
 fi
 
 apt update
-apt install \
-	git \
+apt install -y \
 	cmake \
 	g++ \
 	libfmt-dev \
