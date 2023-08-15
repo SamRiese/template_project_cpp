@@ -5,8 +5,8 @@ if [ "$(id -u)" -ne 0 ]; then
 	exit -1
 fi
 
-apt update
-apt install -y \
+apt-get update
+apt-get install -y \
 	cmake \
 	g++ \
 	libfmt-dev \
