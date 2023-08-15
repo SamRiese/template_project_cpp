@@ -28,14 +28,14 @@ jobs:
       run: |
         cd build/apps/example_app/
         ./example_app
-  build--arch-job:
+  build-arch-job:
     runs-on: ubuntu-latest
     container:
       image: archlinux:latest
     steps:
     - name: 'Install git'
       run: |
-        pacman -Syu git
+        pacman -Syu --noconfirm git
     - name: 'Checkout repository'
       uses: actions/checkout@v3
       with:
